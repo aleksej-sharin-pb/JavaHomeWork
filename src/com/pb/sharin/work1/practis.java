@@ -1,5 +1,6 @@
 package com.pb.sharin.work1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class practis {
@@ -33,6 +34,12 @@ public class practis {
         */
 
 
+        Random random = new Random();
+        int x = random.nextInt(101);
+
+        System.out.println(x);
+
+        /*
         Scanner scan = new Scanner(System.in);
                 int x, y;
         String symbol;
@@ -47,7 +54,7 @@ public class practis {
         symbol = scan.next();
 
         System.out.println("X = " + x + " Y = " + y + " = " + (x+y) + " SYMBOL = " + symbol);
-
+*/
         // System.out.println("Test practis!");
     }
 }
