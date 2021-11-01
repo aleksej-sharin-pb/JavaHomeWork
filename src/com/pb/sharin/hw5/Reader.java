@@ -15,69 +15,75 @@ public class Reader {
     //===================================================
     //Переменные класса
     //===================================================
-    public String idCard;     //номер читательского билета
-    public String fio;        //ФИО
-    public String dateBirth;  //дата рождения
-    public String number;     //телефон
-    public String department; //факультет
+    private String idCard;     //номер читательского билета
+    private String fio;        //ФИО
+    private String dateBirth;  //дата рождения
+    private String number;     //телефон
+    private String department; //факультет
     //===================================================
     //поля для хранения инф. по взятым или возвращенным данных
     //===================================================
     public int qtyTakeBook;   //кол-во взятых книг
     public int qtyReturnBook; //кол-во возвращенных книг
+
     //===================================================
     //Методы класса, по внесению данных
     //===================================================
     public Reader() {
-        this.idCard        = new String();
-        this.fio           = new String();
-        this.dateBirth     = new String();
-        this.number        = new String();
-        this.department    = new String();
-        this.qtyTakeBook   = 0;
+        this.idCard = new String();
+        this.fio = new String();
+        this.dateBirth = new String();
+        this.number = new String();
+        this.department = new String();
+        this.qtyTakeBook = 0;
         this.qtyReturnBook = 0;
     }
+
     //===================================================
     public Reader(String idCard, String fio, String dateBirth, String number, String department) {
-        this.idCard        = idCard;
-        this.fio           = fio;
-        this.dateBirth     = dateBirth;
-        this.number        = number;
-        this.department    = department;
-        this.qtyTakeBook   = 0;
+        this.idCard = idCard;
+        this.fio = fio;
+        this.dateBirth = dateBirth;
+        this.number = number;
+        this.department = department;
+        this.qtyTakeBook = 0;
         this.qtyReturnBook = 0;
         readerCount++;
     }
+
     //===================================================
     public Reader(String idCard, String fio) {
         this.idCard = idCard;
-        this.fio    = fio;
-        this.dateBirth     = new String();
-        this.number        = new String();
-        this.department    = new String();
-        this.qtyTakeBook   = 0;
+        this.fio = fio;
+        this.dateBirth = new String();
+        this.number = new String();
+        this.department = new String();
+        this.qtyTakeBook = 0;
         this.qtyReturnBook = 0;
     }
+
     //===================================================
     public Reader(String idCard, String fio, String dateBirth) {
-        this.idCard    = idCard;
-        this.fio       = fio;
+        this.idCard = idCard;
+        this.fio = fio;
         this.dateBirth = dateBirth;
-        this.number        = new String();
-        this.department    = new String();
-        this.qtyTakeBook   = 0;
+        this.number = new String();
+        this.department = new String();
+        this.qtyTakeBook = 0;
         this.qtyReturnBook = 0;
     }
+
     //===================================================
     public Reader(String idCard, String fio, String dateBirth, String number) {
-        this.idCard    = idCard;
-        this.fio       = fio;
+        this.idCard = idCard;
+        this.fio = fio;
         this.dateBirth = dateBirth;
-        this.number    = number;
-        this.department    = new String();
-        this.qtyTakeBook   = 0;
+        this.number = number;
+        this.department = new String();
+        this.qtyTakeBook = 0;
         this.qtyReturnBook = 0;
     }
+
     //===================================================
     //Методы по получению информации о пользователе
     //===================================================
@@ -125,38 +131,156 @@ public class Reader {
     //===================================================
     //Вывод данных
     //===================================================
-    public void printAll() {
-        System.out.println("Информиция о читателе:");
-        System.out.println("Номер читательского билета:"+this.idCard);
-        System.out.println("ФИО:                       "+this.fio);
+    public void printInfo() {
+        String info = new String();
+
+        if (this.fio.length() > 0) {
+            //info = this.name +" ("+this.author+" "+ this.year + "г."+")";
+            info = this.fio;
+        }
+        ;
+        if (this.idCard.length() > 0) {
+            info = info + " ( idCard:" + this.idCard;
+        } else info = info + " ( idCard - нет";
+        ;
         if (this.dateBirth.length() > 0) {
-            System.out.println("Дата рождения:             " + this.dateBirth);
-        } else System.out.println("Дата не указана.");
+            info = info + ", " + this.dateBirth;
+        } else  info = info + ", даты рождения - нет";
         ;
         if (this.number.length() > 0) {
-            System.out.println("Tелефон:                   " + this.number);
-        } else System.out.println("Tелефон не указан.");
+            info = info + ", " + this.number;
+        } else  info = info + ", телефон - нет";
         ;
         if (this.department.length() > 0) {
-            System.out.println("Факультет:                 " + this.department);
-        } else System.out.println("Факультет не указан.");
+            info = info + ", " + this.department;
+        } else  info = info + " ф-т - нет";
         ;
-        if(this.qtyTakeBook > 0 ) {
-            System.out.println("На руках :  "     +this.qtyTakeBook   + " книг.");
-            System.out.println("Возвращено :"     +this.qtyReturnBook + " книг.");
-        }
-        System.out.println("На руках нет книг.");
+        if (this.qtyTakeBook > 0) {
+            info = info + ", Книг на руках: " + this.qtyTakeBook;
+        };
+        if (this.qtyReturnBook > 0) {
+            info = info + ", Возвращено книг:  " + this.qtyReturnBook;
+        };
+        info = info + ".)";
+        System.out.print(info);
     }
     //===================================================
     //Методы по взятию и возврату книг
     //===================================================
     public void takeBook(int takeBook) {
         this.qtyTakeBook = this.qtyTakeBook + takeBook;
-        getFio(); System.out.print("взял " + takeBook + " книги.");
+        System.out.println("---------------------------");
+        System.out.println("takeBook QTY взятие " + takeBook +" книг:");
+        System.out.print(getFio());
+        System.out.println(" взял " + takeBook + " книги.");
     }
     //===================================================
-    public void returnBook(int returnBook) {
-        this.qtyReturnBook = returnBook;
-        getFio(); System.out.print(" вернул " + returnBook + " книг.");
+    public void takeBook(String... nameBooks) {
+        int qty = nameBooks.length;
+        //проставляем кол-во взятых книг
+        this.qtyTakeBook = this.qtyTakeBook + qty;
+        //выводим сообщение
+        int i = 1; //переменная для проставления запятых
+        System.out.println("---------------------------");
+        System.out.println("takeBook NAME взятие " + qty +" книг:");
+        System.out.print(getFio());
+        System.out.print(" взял книги:");
+        for (String nameBook : nameBooks) {
+            System.out.print(" "+nameBook);
+            //проверяем кол-во и в середине отделяем запятой
+            if (i < qty) {
+                System.out.print(",");
+                i++;
+            } else System.out.println(".");
+        }
     }
+    //===================================================
+    public void takeBook(Book... books) {
+        int qty = books.length;
+        //проставляем кол-во взятых книг
+        this.qtyTakeBook = this.qtyTakeBook + qty;
+        //выводим сообщение
+        int i = 1; //переменная для проставления запятых
+        System.out.println("---------------------------");
+        System.out.println("takeBook BOOKS взятие " + qty +" книг:");
+        System.out.print(getFio());
+        System.out.print(" взял книги:");
+        for (Book book : books) {
+            System.out.print(" ");
+            book.printInfo();
+            //проверяем кол-во и в середине отделяем запятой
+            if (i < qty) {
+                System.out.print(",");
+                i++;
+            } else System.out.println(".");
+        }
+    }
+    //===================================================
+    //Методы по возврату книг
+    //===================================================
+    public void returnBook(int qtyBook) {
+        //проставляем кол-во возвращенных книг
+        if (this.qtyTakeBook < qtyBook )
+            System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
+        if (this.qtyTakeBook > 0 && qtyBook >0 && this.qtyTakeBook > qtyBook ) {
+            this.qtyReturnBook = qtyBook;
+            this.qtyTakeBook   = this.qtyTakeBook - qtyBook;
+        };
+        System.out.println("---------------------------");
+        System.out.println("returnBook QTY возврат " + qtyBook +" книг:");
+        System.out.print(getFio());
+        System.out.println(" вернул " + qtyBook + " книги.");
+    }
+    //===================================================
+    public void returnBook(String... nameBooks) {
+        int qty = nameBooks.length;
+        //проставляем кол-во возвращенных книг
+        if (this.qtyTakeBook < qty )
+            System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
+        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook > qty ) {
+            this.qtyReturnBook = qty;
+            this.qtyTakeBook   = this.qtyTakeBook - qty;
+        };
+        //выводим сообщение
+        int i = 1; //переменная для проставления запятых
+        System.out.println("---------------------------");
+        System.out.println("returnBook NAME возврат " + qty +" книг:");
+        System.out.print(getFio());
+        System.out.print(" вернул книги:");
+        for (String nameBook : nameBooks) {
+            System.out.print(" "+nameBook);
+            //проверяем кол-во и в середине отделяем запятой
+            if (i < qty) {
+                System.out.print(",");
+                i++;
+            } else System.out.println(".");
+        }
+    }
+    //===================================================
+    public void returnBook(Book... books) {
+        int qty = books.length;
+        //проставляем кол-во возвращенных книг
+        if (this.qtyTakeBook < qty )
+            System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
+        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook > qty ) {
+            this.qtyReturnBook = qty;
+            this.qtyTakeBook   = this.qtyTakeBook - qty;
+        };
+        //выводим сообщение
+        int i = 1; //переменная для проставления запятых
+        System.out.println("---------------------------");
+        System.out.println("returnBook BOOKS возврат" + qty +" книг:");
+        System.out.print(getFio());
+        System.out.print(" вернул книги:");
+        for (Book book : books) {
+            System.out.print(" ");
+            book.printInfo();
+            //проверяем кол-во и в середине отделяем запятой
+            if (i < qty) {
+                System.out.print(",");
+                i++;
+            } else System.out.println(".");
+        }
+    }
+
 }
