@@ -222,7 +222,7 @@ public class Reader {
         //проставляем кол-во возвращенных книг
         if (this.qtyTakeBook < qtyBook )
             System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
-        if (this.qtyTakeBook > 0 && qtyBook >0 && this.qtyTakeBook > qtyBook ) {
+        if (this.qtyTakeBook > 0 && qtyBook >0 && this.qtyTakeBook >= qtyBook ) {
             this.qtyReturnBook = qtyBook;
             this.qtyTakeBook   = this.qtyTakeBook - qtyBook;
         };
@@ -237,7 +237,7 @@ public class Reader {
         //проставляем кол-во возвращенных книг
         if (this.qtyTakeBook < qty )
             System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
-        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook > qty ) {
+        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook >= qty ) {
             this.qtyReturnBook = qty;
             this.qtyTakeBook   = this.qtyTakeBook - qty;
         };
@@ -262,7 +262,7 @@ public class Reader {
         //проставляем кол-во возвращенных книг
         if (this.qtyTakeBook < qty )
             System.out.println("\tВнимание!!!\nКол-во возвращенных книг больше чем взятых.");
-        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook > qty ) {
+        if (this.qtyTakeBook > 0 && qty >0 && this.qtyTakeBook >= qty ) {
             this.qtyReturnBook = qty;
             this.qtyTakeBook   = this.qtyTakeBook - qty;
         };
