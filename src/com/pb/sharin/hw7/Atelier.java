@@ -7,7 +7,7 @@ public class Atelier {
         int i = 1; //переменная для проставления разделителей
         System.out.println("Список мужской одежды:");
         for (Clothes odezhda : clothes) {
-
+            //для Футболок и Штанов доп. проверяю пол для Мужчин/мальчиков
             if (odezhda instanceof Tshirt) {
                 Tshirt tshirt = (Tshirt) odezhda;
                 if (tshirt.gender.checkMan()) {
@@ -24,13 +24,12 @@ public class Atelier {
                     i++;
                 }
             }
+            //для Галстука пол не проверяем, т.к. он только для мужчин
             if (odezhda instanceof Tie ) {
                 Tie tie = (Tie ) odezhda;
-                if (tie.gender.checkMan()) {
                     System.out.print(i + ". ");
                     tie.dressMan();
                     i++;
-                }
             }
         }
     }
@@ -39,6 +38,7 @@ public class Atelier {
         int i = 1; //переменная для проставления разделителей
         System.out.println("Список женской одежды:");
         for (Clothes odezhda : clothes) {
+            //для Футболок и Штанов доп. проверяю пол для Женщин/девочек
             if (odezhda instanceof Tshirt) {
                 Tshirt tshirt = (Tshirt) odezhda;
                 if (tshirt.gender.checkWoman()) {
@@ -55,13 +55,12 @@ public class Atelier {
                     i++;
                 }
             }
+            //для юбки пол не проверяем, т.к. он только для женщин
             if (odezhda instanceof Skirt  ) {
                 Skirt skirt = (Skirt) odezhda;
-                if (skirt.gender.checkWoman()) {
                     System.out.print(i + ". ");
                     skirt.dressWomen();
                     i++;
-                }
             }
         }
     }
