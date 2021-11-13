@@ -179,7 +179,7 @@ public class Reader {
         int qty = nameBooks.length;
         //проставляем кол-во взятых книг
         this.qtyTakeBook = this.qtyTakeBook + qty;
-        //выводим сообщение
+        //выводим сообщение 
         int i = 1; //переменная для проставления запятых
         System.out.println("---------------------------");
         System.out.println("takeBook NAME взятие " + qty +" книг:");
