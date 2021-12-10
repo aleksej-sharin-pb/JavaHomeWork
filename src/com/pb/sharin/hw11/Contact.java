@@ -12,6 +12,7 @@ import java.util.List;
 class Contact {
 
     public String fio;
+    //Для мап и серриализации данных
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     public transient LocalDate dateOfBirth;
@@ -21,6 +22,7 @@ class Contact {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private transient LocalDateTime dateOfEditing = LocalDateTime.now();
 
+    //Конструкторы
     public Contact() {
     }
 
@@ -51,7 +53,7 @@ class Contact {
         this.address = address;
         this.dateOfEditing = dateOfEditing;
     }
-
+    //Гетеры и сеттеры
     public String getFio() {
         return fio;
     }
@@ -92,25 +94,6 @@ class Contact {
         this.phone.add(phone);
     }
 
-    public  void add(int x, Contact c){
-        this.fio = c.fio;
-        this.dateOfBirth = c.dateOfBirth;
-        this.address = c.address;
-        this.phone = c.phone;
-        this.dateOfEditing = LocalDateTime.now();
-    }
-
-    public boolean add(Contact c) {
-
-        this.fio = c.fio;
-        this.dateOfBirth = c.dateOfBirth;
-        this.address = c.address;
-        this.phone = c.phone;
-        this.dateOfEditing = LocalDateTime.now();
-
-        return true;
-    }
-
     @Override
     public String toString() {
         return "\nContact{" +
@@ -123,7 +106,7 @@ class Contact {
     }
 
 
-
+    //Информация по контакту
     public void print() {
         System.out.println("-------------------------------------" +
                 "\n\tФИО: '" + fio + '\'' +

@@ -1,6 +1,5 @@
 package com.pb.sharin.hw11;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,7 +36,6 @@ public class PhoneBook {
         System.out.println("\t2. Загрузка данных (Импорт)]  - нажмите \"9\".");
         System.out.println("Выход из приложения\t\t         - нажмите \"0\".");
     }
-
     //===========================================================================
     //Метод для редактирования Контактов
     //===========================================================================
@@ -124,7 +122,6 @@ public class PhoneBook {
         System.out.println("Загрузка успешно завершена.");
         return contactsImport;
     }
-
 
     public static void main(String[] args) throws JsonProcessingException {
 

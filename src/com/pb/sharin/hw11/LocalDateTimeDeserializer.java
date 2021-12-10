@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+//Класс Дата со временеия для серриализации класса Contact
 public class LocalDateTimeDeserializer extends StdDeserializer<LocalDateTime> {
 
     private static final long serialVersionUID = 1L;
