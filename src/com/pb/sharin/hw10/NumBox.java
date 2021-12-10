@@ -36,6 +36,9 @@ public class NumBox<T extends Number> {
         if ((count > 0) && (0 < index) && (index < count)) {
             return numbers[index];
         } else {
+
+            return numbers[0];
+            /*
             if (count > 0) {
                 //если индек некоррктный возвращаем последний элемент
                 System.out.println("Елемента с указанным индексом нет. " +
@@ -45,6 +48,7 @@ public class NumBox<T extends Number> {
             else {
                 return numbers[0];
             }
+            */
         }
     }
 

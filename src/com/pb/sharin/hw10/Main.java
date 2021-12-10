@@ -55,7 +55,7 @@ public class Main {
             floatBox.print();
             System.out.println("Кол-во елементов: " + floatBox.length());
             System.out.println("--------------------------------------------------------");
-            System.out.println("Вывод 3-го елемента, кот. нет (если нет выведется последний): " + floatBox.get(3));
+            System.out.println("Вывод 3-го елемента, кот. нет (если нет выведется 0-й): " + floatBox.get(3));
             System.out.println("Хотим добавить 3-й елемент в 2-х размерный массив. ");
             floatBox.add(float3);
         } catch (Exception e1) {
