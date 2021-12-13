@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PhoneBook {
     //===========================================================================
@@ -64,7 +63,10 @@ public class PhoneBook {
         module.addSerializer(LocalDate.class, new LocalDateSerializer());
         module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         mapper.registerModule(module);
-
+        //======================================================
+/*      Для JSON стим не использую, оставил через MAP,
+        тут пример заливки в String
+        //======================================================
         String contactsJsonWriteSTRM = contactsExport.stream()
                 .map(e -> e.toString())
                 .reduce("", String::concat);
@@ -73,7 +75,8 @@ public class PhoneBook {
         System.out.println("contactsJsonWriteSTRM:");
         System.out.println(contactsJsonWriteSTRM);
         System.out.println("--------------------------------------------");
-
+ */
+        //======================================================
         String contactsJsonWrite = mapper.writeValueAsString(contactsExport);
         //Локальный путь к файлу в проекте для выгрузки данных
         Path pathWrite = Paths.get("files/exportStream.json");
@@ -137,7 +140,7 @@ public class PhoneBook {
 
     public static void main(String[] args) throws JsonProcessingException {
 
-        System.out.println("hw12 \"Лямбда выражения и Stream API\"");
+        System.out.println("hw12 \"Lambda and Stream API\"");
         //==============================================================================
         //Значения для формирования тестовых данных
         //==============================================================================
