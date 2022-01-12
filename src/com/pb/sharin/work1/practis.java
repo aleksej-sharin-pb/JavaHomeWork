@@ -1,7 +1,6 @@
 package com.pb.sharin.work1;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class practis {
     public static void main(
