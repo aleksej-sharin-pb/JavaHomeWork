@@ -79,16 +79,17 @@ public class Server {
                         handler.sendMessage(message, currentIndex);
                     }
                 }
-                clientHandlers.remove(this);
-                System.out.println("Клиент " + currentIndex + " отключился");
-                socket.close();
             } catch (Exception ex) {
                 //если отключение прошло с ошибкой
+                for (ClientHandler handler : clientHandlers) {
+                    handler.sendMessage("(Клиент " + currentIndex + ") Собеседник вышел из чата.", currentIndex);
+                }
                 clientHandlers.remove(this);
                 System.out.println("Клиент " + currentIndex + " отключился");
                 try {
                     socket.close(); //закрываем подключение
                 } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }

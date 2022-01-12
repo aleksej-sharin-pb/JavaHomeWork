@@ -5,11 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 
@@ -46,11 +54,16 @@ public class MChat {
                     } catch (IOException e) {
                         writer.println(fieldClientName.getText() + " вышел из чата!");
                         writer.flush();
+
+                        try {
+                            TimeUnit.SECONDS.sleep(2);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
                         histMsg.append("Соединение с сервером прервано");
                         histMsg.append("\n");
                         //System.exit(0);
                         break;
-
                     }
                 }
             }).start();
@@ -59,7 +72,6 @@ public class MChat {
             btnMsgSend.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
                     //логин и текст сообщения
                     String message = fieldClientName.getText() + ": " + fieldMsg.getText();
                     writer.println(message);
@@ -68,20 +80,30 @@ public class MChat {
                 }
             });
 
+
             // добавляем обработчик события закрытия окна клиентского приложения
             addWindowListener(new WindowAdapter() {
+
                 @Override
                 public void windowClosing(WindowEvent e) {
+                    System.out.println("Выход 1");
+                    writer.println(fieldClientName.getText() + " вышел из чата!");
+                    try {
+                        TimeUnit.SECONDS.sleep(10);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+
                     super.windowClosing(e);
                     try {
-                        writer.println(fieldClientName.getText() + " вышел из чата!");
-
+                        System.out.println("Выход 2");
                         writer.flush();
                         writer.close();
                         reader.close();
+                        //wait(1000);
                         socket.close();
                     } catch (IOException exc) {
-                        System.exit(0);
+                        exc.printStackTrace();
                     }
                 }
             });
@@ -105,5 +127,6 @@ public class MChat {
         frame.setTitle("hw15_CHat");
         frame.setVisible(true);
         frame.setBounds(600, 300, 600, 500);
+       // frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 }
